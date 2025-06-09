@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Madushan Dasanayaka | Tech Solutions | Filmmaking | AI Projects</title>
+    <meta name="description" content="Explore Madushan Dasanayaka's portfolio of innovative tech solutions, filmmaking projects, and AI applications.">
+    <meta name="keywords" content="portfolio, tech solutions, filmmaker, AI projects, innovation, technology">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">Madushan</a>
+            
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="portfolio.html" class="nav__link">Portfolio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="connect.html" class="nav__link">Connect</a>
+                    </li>
+                </ul>
+                
+                <!-- Theme Toggle -->
+                <div class="theme-toggle">
+                    <div class="theme-toggle__slider">
+                        <i class="theme-toggle__icon fas fa-sun"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Portfolio Hero Section -->
+        <section class="portfolio-hero section">
+            <div class="container">
+                <div class="portfolio-hero__content text-center">
+                    <h1 class="portfolio-hero__title">My Portfolio</h1>
+                    <p class="portfolio-hero__subtitle">Innovation • Technology • Creativity</p>
+                    <p class="portfolio-hero__description">
+                        Explore my journey through tech solutions, filmmaking, and AI innovation. 
+                        Each project represents a step forward in solving real-world problems 
+                        through creative and technological excellence.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Filter -->
+        <section class="portfolio-filter section">
+            <div class="container">
+                <div class="filter__tabs">
+                    <button class="filter__tab active" data-filter="all">
+                        <i class="fas fa-th"></i>
+                        All Projects
+                    </button>
+                    <button class="filter__tab" data-filter="tech">
+                        <i class="fas fa-laptop-code"></i>
+                        Tech Solutions
+                    </button>
+                    <button class="filter__tab" data-filter="ai">
+                        <i class="fas fa-brain"></i>
+                        AI Innovation
+                    </button>
+                    <button class="filter__tab" data-filter="film">
+                        <i class="fas fa-film"></i>
+                        Filmmaking
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section class="portfolio-grid section">
+            <div class="container">
+                <div class="portfolio__items grid">
+                    <!-- Tech Solutions Projects -->
+                    <div class="portfolio__item card" data-category="tech">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-analytics.jpg" alt="AI Business Analytics Platform" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('analytics')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">AI</span>
+                            </div>
+                            <h3 class="portfolio__title">AI Business Analytics Platform</h3>
+                            <p class="portfolio__description">
+                                Comprehensive analytics platform that leverages machine learning to provide 
+                                actionable business insights for SMEs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__item card" data-category="tech">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-inventory.jpg" alt="Smart Inventory System" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('inventory')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">IoT</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">AI</span>
+                            </div>
+                            <h3 class="portfolio__title">Smart Inventory Management</h3>
+                            <p class="portfolio__description">
+                                IoT-enabled inventory system with AI-powered demand forecasting 
+                                that reduced operational costs by 40%.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__item card" data-category="tech">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-ecommerce.jpg" alt="E-commerce Platform" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('ecommerce')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">Next.js</span>
+                                <span class="tag">Stripe</span>
+                                <span class="tag">AWS</span>
+                            </div>
+                            <h3 class="portfolio__title">Modern E-commerce Platform</h3>
+                            <p class="portfolio__description">
+                                Full-featured e-commerce solution with advanced search, 
+                                payment integration, and real-time analytics.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- AI Innovation Projects -->
+                    <div class="portfolio__item card" data-category="ai">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-content-ai.jpg" alt="AI Content Generator" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('content-ai')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">OpenAI</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">SaaS</span>
+                            </div>
+                            <h3 class="portfolio__title">AI Content Generator</h3>
+                            <p class="portfolio__description">
+                                SaaS platform that generates high-quality content for marketing, 
+                                blogs, and social media using advanced AI models.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__item card" data-category="ai">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-chatbot.jpg" alt="Intelligent Chatbot" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('chatbot')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">NLP</span>
+                                <span class="tag">TensorFlow</span>
+                                <span class="tag">API</span>
+                            </div>
+                            <h3 class="portfolio__title">Intelligent Customer Support Bot</h3>
+                            <p class="portfolio__description">
+                                AI-powered chatbot with natural language processing that handles 
+                                80% of customer inquiries automatically.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__item card" data-category="ai">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-vision.jpg" alt="Computer Vision App" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('vision')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">OpenCV</span>
+                                <span class="tag">PyTorch</span>
+                                <span class="tag">Mobile</span>
+                            </div>
+                            <h3 class="portfolio__title">Smart Document Scanner</h3>
+                            <p class="portfolio__description">
+                                Computer vision application that automatically scans, processes, 
+                                and digitizes documents with 99% accuracy.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Filmmaking Projects -->
+                    <div class="portfolio__item card" data-category="film">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-documentary.jpg" alt="Tech Documentary" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('documentary')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">Documentary</span>
+                                <span class="tag">4K</span>
+                                <span class="tag">Award Winner</span>
+                            </div>
+                            <h3 class="portfolio__title">"Digital Dreams" Documentary</h3>
+                            <p class="portfolio__description">
+                                Award-winning short documentary exploring the impact of AI 
+                                on creative industries and the future of work.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__item card" data-category="film">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-commercial.jpg" alt="Tech Commercial" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('commercial')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">Commercial</span>
+                                <span class="tag">Motion Graphics</span>
+                                <span class="tag">Branding</span>
+                            </div>
+                            <h3 class="portfolio__title">Tech Startup Promotional Series</h3>
+                            <p class="portfolio__description">
+                                Series of promotional videos for emerging tech startups, 
+                                combining storytelling with cutting-edge visual effects.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio__item card" data-category="film">
+                        <div class="portfolio__image">
+                            <img src="assets/images/project-tutorial.jpg" alt="Educational Content" class="portfolio__img">
+                            <div class="portfolio__overlay">
+                                <div class="portfolio__buttons">
+                                    <button class="portfolio__button" onclick="openModal('tutorial')">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <a href="#" class="portfolio__button" target="_blank">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio__content">
+                            <div class="portfolio__tags">
+                                <span class="tag">Educational</span>
+                                <span class="tag">Animation</span>
+                                <span class="tag">YouTube</span>
+                            </div>
+                            <h3 class="portfolio__title">AI Education Series</h3>
+                            <p class="portfolio__description">
+                                Educational video series making AI concepts accessible to 
+                                everyone through engaging animations and clear explanations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Statistics -->
+        <section class="portfolio-stats section">
+            <div class="container">
+                <h2 class="section__title">Project Impact</h2>
+                <p class="section__subtitle">Numbers That Matter</p>
+                
+                <div class="stats__content grid">
+                    <div class="stat__item card text-center">
+                        <div class="stat__icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="stat__number">15+</h3>
+                        <p class="stat__label">Completed Projects</p>
+                        <p class="stat__description">Across tech, AI, and filmmaking</p>
+                    </div>
+
+                    <div class="stat__item card text-center">
+                        <div class="stat__icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="stat__number">50+</h3>
+                        <p class="stat__label">Happy Clients</p>
+                        <p class="stat__description">From startups to enterprises</p>
+                    </div>
+
+                    <div class="stat__item card text-center">
+                        <div class="stat__icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="stat__number">40%</h3>
+                        <p class="stat__label">Average Cost Reduction</p>
+                        <p class="stat__description">Through AI automation</p>
+                    </div>
+
+                    <div class="stat__item card text-center">
+                        <div class="stat__icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3 class="stat__number">5</h3>
+                        <p class="stat__label">Industry Awards</p>
+                        <p class="stat__description">For innovation and creativity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section">
+            <div class="container">
+                <div class="cta__content text-center">
+                    <h2 class="cta__title">Ready to Start Your Next Project?</h2>
+                    <p class="cta__description">
+                        Let's collaborate to bring your vision to life. Whether you need a tech solution, 
+                        AI integration, or creative content, I'm here to help you succeed.
+                    </p>
+                    <div class="cta__buttons">
+                        <a href="connect.html" class="btn btn--large">
+                            <i class="fas fa-rocket"></i>
+                            Start a Project
+                        </a>
+                        <a href="about.html" class="btn btn--secondary btn--large">
+                            <i class="fas fa-user"></i>
+                            Learn More About Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Modals -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal__close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content" class="modal__content">
+                <!-- Modal content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content grid">
+                <div class="footer__section">
+                    <h3 class="footer__title">Madushan Dasanayaka</h3>
+                    <p class="footer__description">
+                        Entrepreneur building innovative tech solutions, exploring filmmaking, 
+                        and leveraging AI to create meaningful impact.
+                    </p>
+                    <div class="footer__social social">
+                        <a href="#" class="social__link social__link--linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social__link social__link--youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social__link social__link--twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social__link social__link--instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html" class="footer__link">Home</a></li>
+                        <li><a href="about.html" class="footer__link">About</a></li>
+                        <li><a href="connect.html" class="footer__link">Connect</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Services</h4>
+                    <ul class="footer__links">
+                        <li><span class="footer__link">Tech Solutions</span></li>
+                        <li><span class="footer__link">AI Integration</span></li>
+                        <li><span class="footer__link">Filmmaking</span></li>
+                        <li><span class="footer__link">Consulting</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Get in Touch</h4>
+                    <p class="footer__contact">
+                        <i class="fas fa-envelope"></i>
+                        hello@madushan.dev
+                    </p>
+                    <p class="footer__contact">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Colombo, Sri Lanka
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copy">
+                    &copy; 2024 Madushan Dasanayaka. All rights reserved.
+                </p>
+                <p class="footer__made">
+                    Made with <i class="fas fa-heart"></i> for innovation
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterTabs = document.querySelectorAll('.filter__tab');
+            const portfolioItems = document.querySelectorAll('.portfolio__item');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const filter = tab.getAttribute('data-filter');
+                    
+                    // Remove active class from all tabs
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Filter portfolio items
+                    portfolioItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                            item.classList.add('animate-fade-in-up');
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // Modal functionality
+        const modalData = {
+            analytics: {
+                title: "AI Business Analytics Platform",
+                image: "assets/images/project-analytics-full.jpg",
+                description: "A comprehensive analytics platform that leverages machine learning to provide actionable business insights for SMEs. Built with React, Node.js, and TensorFlow.",
+                features: ["Real-time data processing", "Predictive analytics", "Custom dashboards", "API integrations"],
+                tech: ["React", "Node.js", "TensorFlow", "MongoDB", "AWS"],
+                link: "#"
+            },
+            inventory: {
+                title: "Smart Inventory Management",
+                image: "assets/images/project-inventory-full.jpg",
+                description: "IoT-enabled inventory system with AI-powered demand forecasting that reduced operational costs by 40% for participating businesses.",
+                features: ["IoT sensors integration", "Demand forecasting", "Automated reordering", "Mobile app"],
+                tech: ["Python", "IoT", "Machine Learning", "React Native"],
+                link: "#"
+            },
+            // Add more modal data as needed
+        };
+
+        function openModal(projectId) {
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            const data = modalData[projectId];
+            
+            if (data) {
+                content.innerHTML = `
+                    <div class="modal__header">
+                        <img src="${data.image}" alt="${data.title}" class="modal__image">
+                        <h2 class="modal__title">${data.title}</h2>
+                    </div>
+                    <div class="modal__body">
+                        <p class="modal__description">${data.description}</p>
+                        <div class="modal__features">
+                            <h3>Key Features:</h3>
+                            <ul>
+                                ${data.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="modal__tech">
+                            <h3>Technologies Used:</h3>
+                            <div class="modal__tags">
+                                ${data.tech.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="modal__actions">
+                            <a href="${data.link}" class="btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                `;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal-overlay');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+

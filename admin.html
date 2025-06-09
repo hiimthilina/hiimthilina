@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Content Management | Madushan Dasanayaka</title>
+    <meta name="description" content="Private admin panel for managing content and posts.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">Madushan</a>
+            
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="index.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about.html" class="nav__link">About</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="portfolio.html" class="nav__link">Portfolio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="connect.html" class="nav__link">Connect</a>
+                    </li>
+                </ul>
+                
+                <!-- Theme Toggle -->
+                <div class="theme-toggle">
+                    <div class="theme-toggle__slider">
+                        <i class="theme-toggle__icon fas fa-sun"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Admin Access Control -->
+        <section class="admin-access section" id="admin-access">
+            <div class="container">
+                <div class="access__content">
+                    <div class="access__card card">
+                        <div class="access__header">
+                            <div class="access__icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h1 class="access__title">Admin Access Required</h1>
+                            <p class="access__description">
+                                This is a private admin panel for content management. 
+                                Please enter the access code to continue.
+                            </p>
+                        </div>
+                        
+                        <form class="access__form" id="access-form">
+                            <div class="form__group">
+                                <input type="password" id="access-code" class="form__input" placeholder=" " required>
+                                <label class="form__label">Access Code</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn--large">
+                                <i class="fas fa-key"></i>
+                                Access Admin Panel
+                            </button>
+                        </form>
+                        
+                        <div class="access__hint">
+                            <p><i class="fas fa-info-circle"></i> Hint: Your first name in lowercase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel (Hidden by default) -->
+        <section class="admin-panel section hidden" id="admin-panel">
+            <div class="container">
+                <div class="admin__header">
+                    <h1 class="admin__title">Content Management Panel</h1>
+                    <p class="admin__subtitle">Create and manage your social media posts</p>
+                    <button class="btn btn--secondary" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+                
+                <div class="admin__content">
+                    <div class="admin__sidebar">
+                        <div class="admin__nav">
+                            <button class="admin__nav-item active" data-tab="create">
+                                <i class="fas fa-plus"></i>
+                                Create Post
+                            </button>
+                            <button class="admin__nav-item" data-tab="manage">
+                                <i class="fas fa-list"></i>
+                                Manage Posts
+                            </button>
+                            <button class="admin__nav-item" data-tab="analytics">
+                                <i class="fas fa-chart-bar"></i>
+                                Analytics
+                            </button>
+                        </div>
+                        
+                        <div class="admin__stats card">
+                            <h3 class="stats__title">Quick Stats</h3>
+                            <div class="stats__items">
+                                <div class="stats__item">
+                                    <span class="stats__number" id="total-posts">0</span>
+                                    <span class="stats__label">Total Posts</span>
+                                </div>
+                                <div class="stats__item">
+                                    <span class="stats__number" id="this-month">0</span>
+                                    <span class="stats__label">This Month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin__main">
+                        <!-- Create Post Tab -->
+                        <div class="admin__tab active" id="create-tab">
+                            <div class="create__container">
+                                <div class="create__form-section">
+                                    <h2 class="create__title">Create New Post</h2>
+                                    
+                                    <form class="create__form card" id="admin-form">
+                                        <div class="form__group">
+                                            <label class="form__label-static">Post Content</label>
+                                            <textarea 
+                                                name="content" 
+                                                class="form__input form__textarea" 
+                                                placeholder="What's on your mind? Share your latest thoughts, projects, or insights..."
+                                                rows="6" 
+                                                required
+                                                maxlength="500"
+                                            ></textarea>
+                                            <div class="form__counter">
+                                                <span id="char-count">0</span>/500 characters
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form__group">
+                                            <label class="form__label-static">Add Image (Optional)</label>
+                                            <div class="image__upload">
+                                                <input type="file" id="image-upload" accept="image/*" class="image__input">
+                                                <label for="image-upload" class="image__label">
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                    <span>Click to upload image or drag and drop</span>
+                                                </label>
+                                                <div class="image__preview hidden" id="image-preview">
+                                                    <img id="preview-img" alt="Preview">
+                                                    <button type="button" class="image__remove" onclick="removeImage()">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form__group">
+                                            <label class="form__label-static">Post Tags</label>
+                                            <div class="tags__container">
+                                                <div class="tags__suggestions">
+                                                    <button type="button" class="tag__suggestion" onclick="addTag('TechSolutions')">#TechSolutions</button>
+                                                    <button type="button" class="tag__suggestion" onclick="addTag('AI')">#AI</button>
+                                                    <button type="button" class="tag__suggestion" onclick="addTag('Filmmaking')">#Filmmaking</button>
+                                                    <button type="button" class="tag__suggestion" onclick="addTag('Entrepreneurship')">#Entrepreneurship</button>
+                                                    <button type="button" class="tag__suggestion" onclick="addTag('Innovation')">#Innovation</button>
+                                                </div>
+                                                <div class="tags__selected" id="selected-tags"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form__actions">
+                                            <button type="button" class="btn btn--secondary" onclick="previewPost()">
+                                                <i class="fas fa-eye"></i>
+                                                Preview
+                                            </button>
+                                            <button type="submit" class="btn btn--large">
+                                                <i class="fas fa-paper-plane"></i>
+                                                Publish Post
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                                <div class="create__preview-section">
+                                    <h3 class="preview__title">Live Preview</h3>
+                                    <div class="preview__container card">
+                                        <div id="post-preview" class="preview__content">
+                                            <div class="preview__placeholder">
+                                                <i class="fas fa-eye"></i>
+                                                <p>Your post preview will appear here</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Manage Posts Tab -->
+                        <div class="admin__tab" id="manage-tab">
+                            <h2 class="manage__title">Manage Posts</h2>
+                            <div class="manage__container">
+                                <div class="manage__filters">
+                                    <button class="filter__btn active" data-filter="all">All Posts</button>
+                                    <button class="filter__btn" data-filter="recent">Recent</button>
+                                    <button class="filter__btn" data-filter="popular">Popular</button>
+                                </div>
+                                
+                                <div class="posts__list" id="posts-list">
+                                    <!-- Posts will be dynamically loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Analytics Tab -->
+                        <div class="admin__tab" id="analytics-tab">
+                            <h2 class="analytics__title">Content Analytics</h2>
+                            <div class="analytics__container">
+                                <div class="analytics__cards">
+                                    <div class="analytics__card card">
+                                        <div class="analytics__icon">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <div class="analytics__info">
+                                            <h3 class="analytics__number">2.4K</h3>
+                                            <p class="analytics__label">Total Views</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="analytics__card card">
+                                        <div class="analytics__icon">
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="analytics__info">
+                                            <h3 class="analytics__number">486</h3>
+                                            <p class="analytics__label">Total Likes</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="analytics__card card">
+                                        <div class="analytics__icon">
+                                            <i class="fas fa-share"></i>
+                                        </div>
+                                        <div class="analytics__info">
+                                            <h3 class="analytics__number">127</h3>
+                                            <p class="analytics__label">Total Shares</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="analytics__card card">
+                                        <div class="analytics__icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="analytics__info">
+                                            <h3 class="analytics__number">+23%</h3>
+                                            <p class="analytics__label">Growth Rate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="analytics__chart card">
+                                    <h3 class="chart__title">Engagement Over Time</h3>
+                                    <div class="chart__placeholder">
+                                        <i class="fas fa-chart-area"></i>
+                                        <p>Analytics chart would be displayed here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content grid">
+                <div class="footer__section">
+                    <h3 class="footer__title">Madushan Dasanayaka</h3>
+                    <p class="footer__description">
+                        Entrepreneur building innovative tech solutions, exploring filmmaking, 
+                        and leveraging AI to create meaningful impact.
+                    </p>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Admin Panel</h4>
+                    <ul class="footer__links">
+                        <li><span class="footer__link">Content Management</span></li>
+                        <li><span class="footer__link">Post Analytics</span></li>
+                        <li><span class="footer__link">Private Access</span></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html" class="footer__link">Home</a></li>
+                        <li><a href="connect.html" class="footer__link">Connect</a></li>
+                        <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Security</h4>
+                    <p class="footer__contact">
+                        <i class="fas fa-shield-alt"></i>
+                        Protected Admin Area
+                    </p>
+                    <p class="footer__contact">
+                        <i class="fas fa-lock"></i>
+                        Secure Content Management
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copy">
+                    &copy; 2024 Madushan Dasanayaka. All rights reserved.
+                </p>
+                <p class="footer__made">
+                    Admin Panel v1.0
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Admin Panel JavaScript
+        let selectedTags = [];
+        let currentImageData = null;
+
+        // Access control
+        document.getElementById('access-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const accessCode = document.getElementById('access-code').value;
+            
+            // Simple access control (in production, this would be more secure)
+            if (accessCode.toLowerCase() === 'madushan') {
+                document.getElementById('admin-access').classList.add('hidden');
+                document.getElementById('admin-panel').classList.remove('hidden');
+                loadAdminData();
+            } else {
+                showNotification('Invalid access code. Please try again.', 'error');
+            }
+        });
+
+        // Tab switching
+        document.querySelectorAll('.admin__nav-item').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+
+        function switchTab(tabName) {
+            // Remove active class from all tabs and nav items
+            document.querySelectorAll('.admin__nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.admin__tab').forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to selected tab and nav item
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // Load tab-specific data
+            if (tabName === 'manage') {
+                loadPostsList();
+            }
+        }
+
+        // Character counter
+        document.querySelector('textarea[name="content"]').addEventListener('input', function() {
+            const charCount = this.value.length;
+            document.getElementById('char-count').textContent = charCount;
+            
+            if (charCount > 450) {
+                document.getElementById('char-count').style.color = 'var(--primary-brown)';
+            } else {
+                document.getElementById('char-count').style.color = 'var(--text-color-secondary)';
+            }
+            
+            updatePreview();
+        });
+
+        // Image upload handling
+        document.getElementById('image-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentImageData = e.target.result;
+                    document.getElementById('preview-img').src = currentImageData;
+                    document.getElementById('image-preview').classList.remove('hidden');
+                    document.querySelector('.image__label').style.display = 'none';
+                    updatePreview();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function removeImage() {
+            currentImageData = null;
+            document.getElementById('image-preview').classList.add('hidden');
+            document.querySelector('.image__label').style.display = 'flex';
+            document.getElementById('image-upload').value = '';
+            updatePreview();
+        }
+
+        // Tag management
+        function addTag(tag) {
+            if (!selectedTags.includes(tag)) {
+                selectedTags.push(tag);
+                updateTagsDisplay();
+                updatePreview();
+            }
+        }
+
+        function removeTag(tag) {
+            selectedTags = selectedTags.filter(t => t !== tag);
+            updateTagsDisplay();
+            updatePreview();
+        }
+
+        function updateTagsDisplay() {
+            const container = document.getElementById('selected-tags');
+            container.innerHTML = selectedTags.map(tag => 
+                `<span class="tag__selected">
+                    #${tag}
+                    <button type="button" onclick="removeTag('${tag}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </span>`
+            ).join('');
+        }
+
+        // Live preview
+        function updatePreview() {
+            const content = document.querySelector('textarea[name="content"]').value;
+            const preview = document.getElementById('post-preview');
+            
+            if (content.trim() || currentImageData) {
+                const post = {
+                    content: content,
+                    image: currentImageData,
+                    date: new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    }),
+                    tags: selectedTags
+                };
+                
+                preview.innerHTML = createPostHTML(post);
+            } else {
+                preview.innerHTML = `
+                    <div class="preview__placeholder">
+                        <i class="fas fa-eye"></i>
+                        <p>Your post preview will appear here</p>
+                    </div>
+                `;
+            }
+        }
+
+        function previewPost() {
+            updatePreview();
+            document.querySelector('.create__preview-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Form submission
+        document.getElementById('admin-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const content = document.querySelector('textarea[name="content"]').value;
+            if (!content.trim()) {
+                showNotification('Please enter some content for the post.', 'error');
+                return;
+            }
+            
+            const post = {
+                id: Date.now(),
+                content: content,
+                image: currentImageData,
+                timestamp: new Date().toISOString(),
+                date: new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                tags: selectedTags
+            };
+            
+            // Save post
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            posts.unshift(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            
+            // Reset form
+            this.reset();
+            selectedTags = [];
+            currentImageData = null;
+            updateTagsDisplay();
+            removeImage();
+            updatePreview();
+            
+            // Update stats
+            loadAdminData();
+            
+            showNotification('Post published successfully!', 'success');
+        });
+
+        // Load admin data
+        function loadAdminData() {
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            document.getElementById('total-posts').textContent = posts.length;
+            
+            const thisMonth = posts.filter(post => {
+                const postDate = new Date(post.timestamp);
+                const now = new Date();
+                return postDate.getMonth() === now.getMonth() && 
+                       postDate.getFullYear() === now.getFullYear();
+            }).length;
+            
+            document.getElementById('this-month').textContent = thisMonth;
+        }
+
+        // Load posts list for management
+        function loadPostsList() {
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            const container = document.getElementById('posts-list');
+            
+            if (posts.length === 0) {
+                container.innerHTML = `
+                    <div class="posts__empty">
+                        <i class="fas fa-inbox"></i>
+                        <p>No posts yet. Create your first post!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = posts.map(post => `
+                <div class="post__item card">
+                    <div class="post__content">
+                        ${post.image ? `<img src="${post.image}" alt="Post image" class="post__thumbnail">` : ''}
+                        <div class="post__text">
+                            <p>${post.content.substring(0, 100)}${post.content.length > 100 ? '...' : ''}</p>
+                            <span class="post__date">${post.date}</span>
+                        </div>
+                    </div>
+                    <div class="post__actions">
+                        <button class="post__action" onclick="editPost(${post.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="post__action post__action--delete" onclick="deletePost(${post.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Post management functions
+        function editPost(postId) {
+            // Implementation for editing posts
+            showNotification('Edit functionality coming soon!', 'info');
+        }
+
+        function deletePost(postId) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                let posts = JSON.parse(localStorage.getItem('posts') || '[]');
+                posts = posts.filter(post => post.id !== postId);
+                localStorage.setItem('posts', JSON.stringify(posts));
+                loadPostsList();
+                loadAdminData();
+                showNotification('Post deleted successfully!', 'success');
+            }
+        }
+
+        // Logout function
+        function logout() {
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('admin-access').classList.remove('hidden');
+            document.getElementById('access-code').value = '';
+        }
+
+        // Utility function to create post HTML
+        function createPostHTML(post) {
+            return `
+                <div class="post-card">
+                    <div class="post-card__header">
+                        <div class="post-card__avatar">
+                            <img src="assets/images/profile.jpg" alt="Madushan Dasanayaka">
+                        </div>
+                        <div class="post-card__info">
+                            <h4>@madushan</h4>
+                            <span class="post-card__date">${post.date}</span>
+                        </div>
+                    </div>
+                    <div class="post-card__content">
+                        ${post.image ? `<img src="${post.image}" alt="Post image" class="post-card__image">` : ''}
+                        <p>${post.content}</p>
+                        ${post.tags && post.tags.length > 0 ? 
+                            `<div class="post-card__tags">
+                                ${post.tags.map(tag => `<span class="post-tag">#${tag}</span>`).join('')}
+                            </div>` : ''
+                        }
+                    </div>
+                    <div class="post-card__actions">
+                        <button class="post-card__action">
+                            <i class="fas fa-heart"></i>
+                            <span>Like</span>
+                        </button>
+                        <button class="post-card__action">
+                            <i class="fas fa-comment"></i>
+                            <span>Comment</span>
+                        </button>
+                        <button class="post-card__action">
+                            <i class="fas fa-share"></i>
+                            <span>Share</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePreview();
+        });
+    </script>
+</body>
+</html>
+
